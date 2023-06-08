@@ -1,85 +1,23 @@
-//const heading = React.createElement("h1",{},"Hello World from React");
+import React from "react";
+import  ReactDOM  from "react-dom/client";
+
+// React Element using Core React
+
+/*const heading = React.createElement(
+    "h1",{id:"heading"},
+    "Heading");
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-//root.render(heading);
+root.render(heading);*/
 
-// creating nested structure
+//  React element using JSX
+// JSX is not html inside JS.
+// it is HTML like syntax
 
-/*
-*   To create structure like:
-        <div id="parent">
-            <div id="child>"
-                <h1>I am h1 tag</h1>
-            </div>
-        </div>
-*/
+const jsxHeading=<h1 id="heading">Heading using JSX</h1>;
+// jsxHeading is also a react element(an object)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(jsxHeading);
 
-/*const parent = React.createElement(
-    "div",
-    {id:"parent"},
-    React.createElement("div",{id:"child"},
-    React.createElement("h1",{},"I am h1 tag")
-   )
-);
-// const root = ReactDOM.createRoot(document.getElementById("root"));
- root.render(parent);*/
-
-// To create siblings with the nested structure
-
-/**
- * 
- * To create structure like:
-        <div id="parent">
-            <div id="child>"
-                <h1>I am h1 tag</h1>
-                <h2>I am h2 tag</h2>
-            </div>
-        </div>
- */ 
-
-/*const parent = React.createElement(
-    "div",
-    {id:"parent"},
-    React.createElement(
-    "div",
-    {id:"child"},
-    [React.createElement("h1",{},"I am h1 tag"),
-    React.createElement("h2",{},"I am h2 tag")]
-    )
-);
-root.render(parent);
-*/
-
-/**
- * To create multiple nested structures along with siblings in them
- * 
- * <div id="parent">
-            <div id="child1>"
-                <h1>I am h1 tag</h1>
-                <h2>I am h2 tag</h2>
-            </div>
-        </div>
-        <div id="parent">
-            <div id="child2>"
-                <h1>I am h1 tag</h1>
-                <h2>I am h2 tag</h2>
-            </div>
-        </div>
-    </div>
- * 
- * 
- * 
- */
-
-    /*const parent = React.createElement(
-        "div",{id:"parent"},[
-            React.createElement("div",{id:"child1"},[
-            React.createElement("h1",{},"I am h1 tag"),
-            React.createElement("h2",{},"I am h2 tag")    
-            ]),
-            React.createElement("div",{id:"child2"},[
-                React.createElement("h1",{},"I am h1 tag"),
-                React.createElement("h2",{},"I am h2 tag")    
-                ])
-        ]
-    );
-    root.render(parent);*/
+// JSX is transpiled to React.createElement =>ReactElement-JS object => HTMLELEMENT(render).
+// Parcel=>to Babel for transpiling the JSX code to ECMAscript.

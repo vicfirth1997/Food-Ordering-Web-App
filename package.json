@@ -1,0 +1,35 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is Namaste React Tutorials",
+  "scripts": {
+    "start":"parcel index1.html",
+    "build":"parcel build index1.html",
+    "test": "jest"
+  },
+  "keywords": [
+    "namaste",
+    "react"
+  ],
+  "author": "Yash Mundra",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vicfirth1997/Namaste-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vicfirth1997/Namaste-react/issues"
+  },
+  "homepage": "https://github.com/vicfirth1997/Namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.9.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browsersList":[
+   "last 2 version"
+  ]
+}
