@@ -27,7 +27,8 @@ const Fn2=()=>(
 
     <div id="container">
         <Fn1/>
-        {/* or like <Fn1></Fn1> */}
+        <Fn1></Fn1>
+        {Fn1()}
     <h1>Inside another Functional Component</h1>
     <h2>{number}</h2>
     <h3>{reactElement}</h3>
