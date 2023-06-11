@@ -1,48 +1,85 @@
 import React from "react";
 import  ReactDOM  from "react-dom/client";
 
-// react element inside another react element
-const ele= <span> With clarity</span>;
+/**
+ * Header
+ *  -Logo
+ *  -Nav Items
+ * Body
+ *  -Search
+ *  -RestContainer
+ *  -RestCard
+ *      -Img
+ *      -Name of res, Start rating,cuisine,delivery time
+ * Footer
+ *  -Copyright
+ *  -Links
+ *  -Address
+ *  -Contact
+ */
 
-const reactElement= (
-    <p>
-        A simple react Element
-        {ele}
-    </p>
-);
 
 
 
 
-// functional component
-const Fn1=()=>(
-    <h1>A functional Component</h1>
-);
-
-// js variable
-const number=10000;
-
-// another functional component with a js variable,another react element and another functional component inside it.
-const Fn2=()=>(
-
-    <div id="container">
-        <Fn1/>
-        <Fn1></Fn1>
-        {Fn1()}
-    <h1>Inside another Functional Component</h1>
-    <h2>{number}</h2>
-    <h3>{reactElement}</h3>
-    </div>
-);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Fn2/>);
 
-// a JSX expression can have only parent element
-// eg-> 
-// (<div></div> <div></div>) will not be allowed
-//  instead (<div> <div></div></div>) will actually work
+const AppLayout = ()=>{
+    return (
+        <div className="app">
+        <Header/>
+        <Body/>
+        </div>
+    )
+}
 
-// React Fragments -> an empty tag
-// <React.Fragment> <div></div> <div></div>    <React.Fragment> will work
-// Or <> <div></div> <div></div> </> will also work
+const Header = ()=>{
+    return (
+        <div className="header">
+            <div className="logo-container">
+                <img
+                    className="logo" 
+                src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png"/>
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
+    )
+}
+
+const Body = () => {
+    return (
+        <div className="body">
+            <div className="search">
+                Search
+            </div>
+            <div className="res-container">
+                <RestCard/>
+                <RestCard/>
+            
+            </div>
+        </div>
+    )
+}
+
+const RestCard=()=> {
+    return (
+        <div className="res-card">
+             <img className="res-logo"
+             src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/sotxv0gury7f7vrfvb2r"/> 
+            <h3>Meghana Foods</h3>
+            <h4>Biryani, North Indian,Asian</h4>
+            <h4>4.4 stars</h4>
+            <h4>38 minutes</h4>
+        </div>
+    )
+}
+
+root.render(<AppLayout/>)
