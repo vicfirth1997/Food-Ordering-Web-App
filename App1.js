@@ -37,3 +37,12 @@ const Fn2=()=>(
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Fn2/>);
+
+// a JSX expression can have only parent element
+// eg-> 
+// (<div></div> <div></div>) will not be allowed
+//  instead (<div> <div></div></div>) will actually work
+
+// React Fragments -> an empty tag
+// <React.Fragment> <div></div> <div></div>    <React.Fragment> will work
+// Or <> <div></div> <div></div> </> will also work
