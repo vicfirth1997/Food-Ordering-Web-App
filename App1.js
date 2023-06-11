@@ -1,23 +1,38 @@
 import React from "react";
 import  ReactDOM  from "react-dom/client";
 
-// React Element using Core React
+// react element inside another react element
+const ele= <span> With clarity</span>;
 
-/*const heading = React.createElement(
-    "h1",{id:"heading"},
-    "Heading");
+const reactElement= (
+    <p>
+        A simple react Element
+        {ele}
+    </p>
+);
+
+
+
+
+// functional component
+const Fn1=()=>(
+    <h1>A functional Component</h1>
+);
+
+// js variable
+const number=10000;
+
+// another functional component with a js variable,another react element and another functional component inside it.
+const Fn2=()=>(
+
+    <div id="container">
+        <Fn1/>
+        {/* or like <Fn1></Fn1> */}
+    <h1>Inside another Functional Component</h1>
+    <h2>{number}</h2>
+    <h3>{reactElement}</h3>
+    </div>
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading);*/
-
-//  React element using JSX
-// JSX is not html inside JS.
-// it is HTML like syntax
-
-const jsxHeading=<h1 id="heading">Heading using JSX</h1>;
-// jsxHeading is also a react element(an object)
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxHeading);
-
-// JSX is transpiled to React.createElement =>ReactElement-JS object => HTMLELEMENT(render).
-// Parcel=>to Babel for transpiling the JSX code to ECMAscript.
+root.render(<Fn2/>);
