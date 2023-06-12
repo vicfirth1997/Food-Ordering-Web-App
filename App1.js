@@ -55,7 +55,7 @@ const Header = ()=>{
 }
 
 
-// Real data from the Swiggy api, any random restaurant
+// Data from the Swiggy api
 const resObj= [
     {
       "type": "restaurant",
@@ -1747,27 +1747,11 @@ const Body = () => {
                 Search
             </div>
             <div className="res-container">
-                <RestCard 
-                resData={resObj[0]}
-                />
-             <RestCard 
-                resData={resObj[1]}
-                />
-                 <RestCard 
-                resData={resObj[2]}
-                />
-                 <RestCard 
-                resData={resObj[3]}
-                />
-                 <RestCard 
-                resData={resObj[4]}
-                />
-                 <RestCard 
-                resData={resObj[5]}
-                />
-                 <RestCard 
-                resData={resObj[6]}
-                />
+          
+                {
+                  resObj.map((restaurant)=><RestCard key={restaurant.data.id} resData={restaurant}/>)
+                  // Each restaurant is an Object being given to the prop resData
+                }
             </div>
         </div>
     )
@@ -1775,18 +1759,18 @@ const Body = () => {
 
 const RestCard=(props)=> {
   const {resData} = props;
-
+  const {cloudinaryImageId,name,avgRating,cuisines,costForTwo,deliveryTime} = resData?.data;
     return (
         <div className="res-card">
              <img className="res-logo"
              src=
              {"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/sotxv0gury7f7vrfvb2r"
-             + resData.data.cloudinaryImageId
+             + cloudinaryImageId
              }/> 
-            <h3>{resData.data.name}</h3>
-            <h4>{resData.data.cuisines}</h4>
-            <h4>{resData.data.costForTwoString}</h4>
-            <h4>{resData.data.deliveryTime} minutes</h4>
+            <h3>{name}</h3>
+            <h4>{cuisines.join(", ")}</h4>
+            <h4>{costForTwo/100} FOR TWO</h4>
+            <h4>{deliveryTime} minutes</h4>
         </div>
     )
 }
