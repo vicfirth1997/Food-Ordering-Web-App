@@ -9,22 +9,32 @@ const Body = () => {
 
 
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
-       
+    const [searchText,setSearchText]=useState("");
+    const [filteredRest,setFilteredRest] = useState([]);
+
     useEffect(()=>{
         axios.get(SWIGGY_API).then((res)=>{
             setListOfRestaurants(res?.data?.data?.cards[2]?.data?.data?.cards);
+            setFilteredRest(res?.data?.data?.cards[2]?.data?.data?.cards);
         });
     },[]);
 
+    
     return listOfRestaurants.length===0?<Shimmer/>:(
 
         <div className="body">
-
-            {/* <div className="search">
-                Search
-            </div> */}
-            
             <div className="filter">
+            <div className="search">
+                <input type="text" className="search-box" value={searchText} onChange={(e)=>{
+                    setSearchText(e.target.value);
+                }}/>
+                <button onClick={()=>{
+               const filteredRest= listOfRestaurants.filter(
+                        (res)=>{res.data.name.toLowerCase().includes(searchText.toLowerCase())}
+                    );
+                    setListOfRestaurants(filteredRest);
+                }}>Search</button>
+            </div>
                 <button 
                 className="filter-btn" 
                 onClick={
@@ -32,6 +42,7 @@ const Body = () => {
                    const filteredList=listOfRestaurants.filter(
                         (res)=> res.data.avgRating>4
                     );
+                    temp=listOfRestaurants;
                     setListOfRestaurants(filteredList);
                 }}>
                     Top Rated Restaurant
@@ -39,8 +50,7 @@ const Body = () => {
                 <span>
                     <button className="back-filter-btn" 
                     onClick={
-                        ()=>{
-                    
+                        ()=>{ 
                         axios.get(SWIGGY_API).then((res)=>{
                             setListOfRestaurants(res?.data?.data?.cards[2]?.data?.data?.cards);
                         });
@@ -53,7 +63,7 @@ const Body = () => {
             <div className="res-container">
           
                 {
-                  listOfRestaurants.map((restaurant)=>
+                 filteredRest.map((restaurant)=>
                   <RestCard key={restaurant.data.id} resData={restaurant}/>)
                 
                 }
