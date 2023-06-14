@@ -1,4 +1,4 @@
-const resObj= [
+let resObj= [
     {
       "type": "restaurant",
       "data": {

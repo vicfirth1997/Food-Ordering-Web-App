@@ -4,3 +4,5 @@ export const CDN_URL=
 export const LOGO_URL=
 "https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png"
 
+export const SWIGGY_API=
+"https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.972173773921812&lng=77.6572522893548&page_type=DESKTOP_WEB_LISTING"
