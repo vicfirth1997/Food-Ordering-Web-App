@@ -70,3 +70,10 @@
 .filter {
     display: flex;
 }
+.search-box{
+    margin:0 5px;
+    cursor: pointer;
+}
+.search-btn {
+    cursor:pointer;
+}

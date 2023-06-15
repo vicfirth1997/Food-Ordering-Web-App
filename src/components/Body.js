@@ -7,10 +7,12 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
 
-
+    // for keeping the original list if all the restaurants
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
+    //to have the search bar value and get it update with the last input bar value
     const [searchText,setSearchText]=useState("");
-    const [filteredRest,setFilteredRest] = useState([]);
+    //this will contain all the filter changes and search bar changes 
+     const [filteredRest,setFilteredRest] = useState([]);
 
     useEffect(()=>{
         axios.get(SWIGGY_API).then((res)=>{
@@ -28,11 +30,11 @@ const Body = () => {
                 <input type="text" className="search-box" value={searchText} onChange={(e)=>{
                     setSearchText(e.target.value);
                 }}/>
-                <button onClick={()=>{
-               const filteredRest= listOfRestaurants.filter(
-                        (res)=>{res.data.name.toLowerCase().includes(searchText.toLowerCase())}
+                <button className="search-btn" onClick={()=>{
+                const filteredRest= listOfRestaurants.filter(
+                    (res)=>res.data.name.toLowerCase().includes(searchText.toLowerCase())
                     );
-                    setListOfRestaurants(filteredRest);
+                setFilteredRest(filteredRest);
                 }}>Search</button>
             </div>
                 <button 
@@ -42,8 +44,7 @@ const Body = () => {
                    const filteredList=listOfRestaurants.filter(
                         (res)=> res.data.avgRating>4
                     );
-                    temp=listOfRestaurants;
-                    setListOfRestaurants(filteredList);
+                    setFilteredRest(filteredList);
                 }}>
                     Top Rated Restaurant
                 </button>
@@ -51,9 +52,7 @@ const Body = () => {
                     <button className="back-filter-btn" 
                     onClick={
                         ()=>{ 
-                        axios.get(SWIGGY_API).then((res)=>{
-                            setListOfRestaurants(res?.data?.data?.cards[2]?.data?.data?.cards);
-                        });
+                            setFilteredRest(listOfRestaurants);
                         }
                     }>Back</button>
                 </span>
@@ -63,7 +62,7 @@ const Body = () => {
             <div className="res-container">
           
                 {
-                 filteredRest.map((restaurant)=>
+                filteredRest.map((restaurant)=>
                   <RestCard key={restaurant.data.id} resData={restaurant}/>)
                 
                 }
