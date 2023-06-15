@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import Shimmer from "./Shimmer";
 
+
+
 const Body = () => {
 
     // for keeping the original list if all the restaurants
