@@ -60,7 +60,6 @@ const Body = () => {
             </div>
 
             <div className="res-container">
-          
                 {
                 filteredRest.map((restaurant)=>
                   <RestCard key={restaurant.data.id} resData={restaurant}/>)
